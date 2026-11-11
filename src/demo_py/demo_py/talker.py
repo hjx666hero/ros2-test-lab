@@ -9,7 +9,7 @@ class Talker(Node):
         super().__init__('demo_talker')
         self.publisher_ = self.create_publisher(String, 'demo_chatter', 10)
         self.count = 0
-        self.timer = self.create_timer(0.5, self.tick)
+        self.timer = self.create_timer(0.2, self.tick)
 
     def tick(self):
         msg = String()

@@ -31,3 +31,26 @@ def test_publish_and_receive():
 
     assert received, 'no message received within 5s'
     assert received[0] == 'ping'
+
+import time
+
+from demo_py.talker import Talker
+
+def test_talker_rate():
+    rclpy.init()
+    node = Talker()
+
+    stamps = []
+    node.create_subscription(
+        String, 'demo_chatter', lambda m: stamps.append(time.time()), 10)
+    deadline = time.time() + 5.0
+    while time.time() < deadline and len(stamps) < 4:
+        rclpy.spin_once(node, timeout_sec=0.05)
+
+    node.destroy_node()
+    rclpy.try_shutdown()
+
+    assert len(stamps) >= 4, f'只收到 {len(stamps)} 条，太少了'
+    gaps = [b - a for a, b in zip(stamps, stamps[1:])]
+    avg = sum(gaps) / len(gaps)
+    assert 0.4 < avg < 0.6, f'期望间隔约 0.5 秒，实际 {avg:.2f} 秒'
