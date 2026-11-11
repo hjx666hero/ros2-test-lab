@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="1.156" timestamp="2026-11-11T15:48:31.608671" hostname="DESKTOP-N6P2PH7"><testcase classname="demo_py.test.test_talker" name="test_publish_and_receive" time="0.044" /><testcase classname="demo_py.test.test_talker" name="test_talker_rate" time="0.820"><failure message="AssertionError: 期望间隔约 0.5 秒，实际 0.19 秒&#10;assert 0.4 &lt; 0.18859012921651205">test/test_talker.py:56: in test_talker_rate
-    assert 0.4 &lt; avg &lt; 0.6, f'期望间隔约 0.5 秒，实际 {avg:.2f} 秒'
-E   AssertionError: 期望间隔约 0.5 秒，实际 0.19 秒
-E   assert 0.4 &lt; 0.18859012921651205</failure></testcase></testsuite></testsuites>

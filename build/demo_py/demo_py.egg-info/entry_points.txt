@@ -1,4 +1,0 @@
-[console_scripts]
-listener = demo_py.listener:main
-talker = demo_py.talker:main
-
